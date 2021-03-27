@@ -208,12 +208,11 @@ namespace OrchardCore.Contents.Liquid
 
             tagBuilder.RenderStartTag().WriteTo(writer, (HtmlEncoder)encoder);
 
-            string content;
-            using (var sb = StringBuilderPool.GetInstance())
+            if (statements != null && statements.Count > 0)
             {
-                using (var output = new StringWriter(sb.Builder))
+                using (var sb = StringBuilderPool.GetInstance())
                 {
-                    if (statements != null && statements.Count > 0)
+                    using (var output = new StringWriter(sb.Builder))
                     {
                         var completion = await statements.RenderStatementsAsync(output, encoder, context);
 
@@ -221,17 +220,15 @@ namespace OrchardCore.Contents.Liquid
                         {
                             return completion;
                         }
+
+                        await output.FlushAsync();
                     }
 
-                    await output.FlushAsync();
+                    foreach (var chunk in sb.Builder.GetChunks())
+                    {
+                        writer.Write(chunk);
+                    }
                 }
-
-                content = sb.Builder.ToString();
-            }
-
-            if (content != null)
-            {
-                writer.Write(content);
             }
             else if (!String.IsNullOrEmpty(contentItem.DisplayText))
             {

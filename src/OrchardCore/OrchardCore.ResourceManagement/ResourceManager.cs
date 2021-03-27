@@ -80,12 +80,12 @@ namespace OrchardCore.ResourceManagement
 
             if (resourcePath.StartsWith("~/", StringComparison.Ordinal))
             {
-                resourcePath = _options.ContentBasePath + resourcePath.Substring(1);
+                resourcePath = String.Concat(_options.ContentBasePath, resourcePath.AsSpan(1));
             }
 
             if (resourceDebugPath != null && resourceDebugPath.StartsWith("~/", StringComparison.Ordinal))
             {
-                resourceDebugPath = _options.ContentBasePath + resourceDebugPath.Substring(1);
+                resourceDebugPath = String.Concat(_options.ContentBasePath, resourceDebugPath.AsSpan(1));
             }
 
             return RegisterResource(

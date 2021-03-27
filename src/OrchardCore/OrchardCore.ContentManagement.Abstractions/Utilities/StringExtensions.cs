@@ -60,8 +60,9 @@ namespace OrchardCore.ContentManagement.Utilities
                 characterCount = backup;
             }
 
-            var trimmed = text.Substring(0, characterCount);
-            return trimmed + ellipsis;
+            var trimmed = text.AsSpan(0, characterCount);
+
+            return String.Concat(trimmed, ellipsis);
         }
 
         public static string HtmlClassify(this string text)
