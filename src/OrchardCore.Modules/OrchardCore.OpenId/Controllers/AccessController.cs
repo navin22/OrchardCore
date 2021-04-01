@@ -537,7 +537,7 @@ namespace OrchardCore.OpenId.Controllers
             // subject claim is correctly populated (and avoid an InvalidOperationException), it's manually added here.
             if (string.IsNullOrEmpty(principal.FindFirst(Claims.Subject)?.Value))
             {
-                identity.AddClaim(new Claim(Claims.Subject, principal.GetUserIdentifier()));
+                identity.AddClaim(new Claim(Claims.Subject, principal.FindFirst(ClaimTypes.Name)?.Value ?? "NoName"));
             }
 
             principal.SetScopes(request.GetScopes());

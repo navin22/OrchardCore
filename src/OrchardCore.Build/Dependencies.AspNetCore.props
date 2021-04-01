@@ -3,12 +3,12 @@
   <!-- Default TFM (Singular) and TFMs (Plural) -->
   <PropertyGroup>
     <AspNetCoreTargetFramework>net5.0</AspNetCoreTargetFramework>
-    <AspNetCoreTargetFrameworks>net5.0;netcoreapp3.1</AspNetCoreTargetFrameworks>
+    <AspNetCoreTargetFrameworks>net5.0</AspNetCoreTargetFrameworks>
   </PropertyGroup>
 
   <!-- Default TFMs (Plural) inside Visual Studio -->
   <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true'">
-    <AspNetCoreTargetFrameworks>$(AspNetCoreTargetFramework)</AspNetCoreTargetFrameworks>
+    <AspNetCoreTargetFrameworks>net5.0</AspNetCoreTargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>

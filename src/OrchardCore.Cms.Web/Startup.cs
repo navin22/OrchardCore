@@ -20,6 +20,9 @@ namespace OrchardCore.Cms.Web
 
             app.UseStaticFiles();
 
+            //app.UseHsts();
+            //app.UseHttpsRedirection();
+
             app.UseOrchardCore();
         }
     }

@@ -4,7 +4,7 @@
     <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
   <PropertyGroup>
-    <TargetFrameworks>$(AspNetCoreTargetFrameworks)</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
     <IncludeBuildOutput>False</IncludeBuildOutput>
     <IncludeSource>False</IncludeSource>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
@@ -65,7 +65,7 @@
     </Task>
   </UsingTask>
 
-  <Target Name="TransformTemplateConfigs" BeforeTargets="Build" Condition="'$(TargetFramework)' == '$(AspNetCoreTargetFramework)'">
+  <Target Name="TransformTemplateConfigs" BeforeTargets="Build" Condition="'$(TargetFramework)' == 'net5.0'">
     <!--
       For each template, copy its '.template.config.src' directory to '.template.config',
       removing any earlier output at that location.

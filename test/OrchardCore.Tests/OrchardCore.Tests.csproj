@@ -3,7 +3,7 @@
   <Import Project="..\..\src\OrchardCore.Build\Dependencies.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>$(AspNetCoreTargetFrameworks)</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
